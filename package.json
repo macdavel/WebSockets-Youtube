@@ -1,7 +1,10 @@
 {
-  "name": "kumudzi_node",
-  "version": "0.0.0",
+  "name": "kaswili",
+  "version": "0.0.1",
   "private": true,
+   "engines": {
+    "node": "4.1.1"
+  },
   "scripts": {
     "start": "node app.js"
   },
