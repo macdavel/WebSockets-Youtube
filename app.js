@@ -85,6 +85,9 @@ console.log('Express started on port ' + port);
 
 io.on('connection', function (socket) {
     socket.emit('news','handshake is done');
+    socket.on('addVideo', function(video){
+        io.emit('addVideo', video)
+    })
     // console.log("shake news sent");
   
 });

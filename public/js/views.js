@@ -18,12 +18,12 @@ var DummyReactWrapper = React.createClass({
       console.log("Connection has been Made");
     })
     this.socket.on('addVideo', function(video){
-      
+
       console.log("Received addvideo request");
       videoQueue.push(video);
       this.setState({queuedVideos: videoQueue});
 
-    })
+    }.bind(this))
     // init();
   },
   render: function(){
@@ -122,7 +122,7 @@ var ReactYoutubeSearchResult = React.createClass({
       videoURL: this.props.videoURL
     }
 
-    videoQueue.push(temp_propHolder);
+    // videoQueue.push(temp_propHolder);
     // console.log(this);
     this.props.props.props.handleQueing(temp_propHolder);
     // youtubePlaylist.push(this.props.videoURL);
