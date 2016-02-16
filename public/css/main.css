@@ -175,7 +175,8 @@ textarea {
 }
 
 .yplayer-container{
-    text-align: center;
+    /*text-align: center;*/
+    position: absolute;
 }
 
 
@@ -211,6 +212,9 @@ textarea {
     width: 316px;
 }
 
+.search-section-container{
+    display: flex;
+}
 
 
 

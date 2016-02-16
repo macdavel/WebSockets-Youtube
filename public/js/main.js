@@ -1,4 +1,4 @@
-var youtubePlaylist = ["jdfZw2L0jns","C_E3bSFi8lI"];
+var youtubePlaylist = ["i0Fh1SkjXPQ","7HSyOHae_6U"];
 var videoQueue = [];
 
 var event2 = new Event('build');

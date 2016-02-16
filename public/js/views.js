@@ -85,7 +85,7 @@ var SearchBox = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className = "search-section-container">
      		<div className = "search-container">
               <div className = "search-box-wrapper">
                 <label> <input
