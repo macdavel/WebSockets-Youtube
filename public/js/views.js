@@ -1,8 +1,16 @@
+// var Sidebar = require('react-sidebar');
+
+
+
+
+
+
+
 
 
 var DummyReactWrapper = React.createClass({
   getInitialState: function(){
-    return {queuedVideos: []};
+    return {queuedVideos: [], display: 'none' };
   },
   handleVideoQueue: function(video){
 
@@ -14,9 +22,13 @@ var DummyReactWrapper = React.createClass({
     this.socket = io(host);
     console.log("Component Ready");
     console.log(this.socket);
+    var room = location.pathname;
+    this.socket.emit('room', room);
     this.socket.on('news', function(data){
       console.log("Connection has been Made");
     })
+
+
     this.socket.on('addVideo', function(video){
 
       console.log("Received addvideo request");
@@ -26,11 +38,29 @@ var DummyReactWrapper = React.createClass({
     }.bind(this))
     // init();
   },
+  hide: function(){
+      if(this.state.display == "block"){
+        this.setState({ display: 'none' });
+        console.log("Hiding the div");
+      }
+      else{
+        this.setState({ display: 'block' });
+      }
+      
+  },
   render: function(){
     return(
       <div>
-          <PlaylistBox playlistsongs = {this.state.queuedVideos}/>
-          <SearchBox handleQueing = {this.handleVideoQueue} />
+        <div className="pure-menu custom-menu-top">
+          <div className ="pure-menu-heading " onClick = {this.hide} >Kaswili The Global Playlist</div>
+      </div>
+        <div className = "main-section-sidebar" style = {{display: this.state.display}} >
+            <img className = "close-button" src="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-plain/385/010_x-128.png" onClick = {this.hide} />
+            <SearchBox handleQueing = {this.handleVideoQueue} />
+            <PlaylistBox playlistsongs = {this.state.queuedVideos}/>
+            
+        </div>
+
       </div>
       )
   }
@@ -88,14 +118,16 @@ var SearchBox = React.createClass({
       <div className = "search-section-container">
      		<div className = "search-container">
               <div className = "search-box-wrapper">
-                <label> <input
-                			 placeholder="Search your favourite songs" 
-                			 value={this.state.search_term}
-                			 onChange={this.handleSearchTermChange}
-                			 type="text"/>
-                			  <button className="pure-button" 
-                			 	 onClick={this.handleSubmit} > Search </button>
-               </label>
+                <form>
+                  <label> <input
+                  			 placeholder="Search your favourite songs" 
+                  			 value={this.state.search_term}
+                  			 onChange={this.handleSearchTermChange} onSubmit = {this.handleSubmit}
+                  			 type="text"/>
+                  			  <button className="pure-button search-button" 
+                  			 	 onClick={this.handleSubmit} > Search </button>
+                 </label>
+                </form>
               </div>
               
         </div>
@@ -141,10 +173,9 @@ var ReactYoutubeSearchResult = React.createClass({
 	  render: function() {
       // console.log("I am making the divs")
 	    return (
-	      <div className = "result-div">
-  		    <div className ="thumbnail"> <img className="thumbnail-image" src={this.props.thumbnailURL}></img></div>
-  		    <div className = "description">{this.props.title}</div>
-  		    <button id="add-button" className="pure-button custom-results-button" onClick={this.handleAddButtonClick}> ADD Song</button>
+	      <div className = "youtube-child" onClick={this.handleAddButtonClick} >
+  		    <img className="ychild-thumbnail" src={this.props.thumbnailURL}></img>
+  		    <div className = "ychild-description">{this.props.title}</div>
   		  </div>
 	    );
 	  }
@@ -202,10 +233,8 @@ var PlaylistBox = React.createClass({
     }.bind(this));
 
     return (
-
-      
           
-          <div className = "youtube-container">
+        <div className = "youtube-container">
           {playlistresults}       
         </div> 
       

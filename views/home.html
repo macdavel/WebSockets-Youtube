@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="css/home.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <h1 class="main-title">Kaswili The Party Playlist</h1>
+        <div class = "option" id = "Option1"><a href="/playlist">Create New Playlist</a></div>
+        <div class = "option" id = "Option2">
+            <div class= "desc">
+                <a href="#">Join Existing Session</a>
+            </div> 
+            <div class = "join-sesh" id = "form1">
+                <form class="pure-form">
+                    <input id = "theInput" type="text" class="pure-input-rounded">
+                    <button id = "theButton" type="button" class="pure-button">Search</button>
+                </form>
+
+            </div>
+        </div>
+        <div class = "option" id = "Option3">
+            <div class= "desc">
+                <a href="#">Add songs to Existing Playlist</a>
+            </div>
+            <div class = "join-sesh" id = "form2">
+                <form class="pure-form">
+                    <input id = "theOtherInput" type="text" class="pure-input-rounded">
+                    <button id = "theOtherButton" type="button" class="pure-button">Search</button>
+                </form>
+
+            </div>
+            
+
+        </div>
+
+        
+
+
+
+
+
+
+
+        <!-- React components -->
+<!--         // <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+        // <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+        // <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        // <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        // <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+        // <script src="https://www.youtube.com/iframe_api"></script> -->
+            
+            
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/home.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/babel" src="js/ytPlaylist.js"></script>
+        <script type="text/babel" src="js/views.js"></script>
+        <script src="https://apis.google.com/js/client.js?onload=init"></script>
+        
+
+        
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    </body>
+</html>

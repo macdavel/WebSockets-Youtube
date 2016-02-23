@@ -3,6 +3,9 @@ var videoQueue = [];
 
 var event2 = new Event('build');
 
+var w = window.innerWidth;
+var h = window.innerHeight;
+
 // Listen for the event.
 
 var player;
@@ -15,12 +18,16 @@ var host = location.origin
 function onYouTubeIframeAPIReady() {
         console.log("Youtube player just executed");
         player = new YT.Player('youtubePlayer', {
-          height: '390',
-          width: '640',
+          height: String(h),
+          width: String(w),
+          playerVars: {
+            controls: 0,
+            disablekb: 1
+        },
           videoId: 'M7lc1UVf-VE',
           events: {
             'onReady': yt_loadPlaylist,
-            // 'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange
           }
         });
 }
@@ -35,7 +42,33 @@ function yt_loadPlaylist(){
 
 
 
+function onPlayerStateChange(YPState){
+  console.log("state changed");
+  player.getVideoUrl();
 
+  if(YPState.data == 0){
+    var lastVideoLink = player.getVideoUrl();
+    temp = lastVideoLink.split("v=");
+    var lastVideo = temp[1];
+    console.log(lastVideo);
+    if(videoQueue.length != 0 && lastVideo == "7HSyOHae_6U" || videoQueue.indexOf(lastVideo) > -1){
+        if(lastVideo == "7HSyOHae_6U"){
+          var nextVideo = videoQueue[0];
+          player.loadVideoById(nextVideo);
+
+        }
+        else{
+          console.log("changed the video")
+          var nextVideo = videoQueue[videoQueue.indexOf(lastVideo)+1];
+          player.loadVideoById(nextVideo);
+        }
+
+    }
+
+
+  }
+  
+}
 
 
 function init() {

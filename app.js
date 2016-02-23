@@ -61,9 +61,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //ROUTES
 app.get("/", function(req, res){
-    res.render('index.html');
+    res.render('home.html');
 });
 
+
+app.get('/playlist', function (req, res) {
+  res.render('index.html');
+});
+
+app.get('/:id', function (req, res) {
+  res.render('index.html');
+});
 
 
 
@@ -82,17 +90,22 @@ console.log('Express started on port ' + port);
 
 
 
-
 io.on('connection', function (socket) {
+	socket.on('room', function(room) {
+		socket.room = room;
+        socket.join(socket.room);
+
+    });
+
+
+
     socket.emit('news','handshake is done');
     socket.on('addVideo', function(video){
-        io.emit('addVideo', video)
+         io.sockets["in"](socket.room).emit('addVideo', video)
     })
     // console.log("shake news sent");
   
 });
-
-
 
 
 ;
