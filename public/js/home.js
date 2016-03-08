@@ -38,6 +38,10 @@ $('#theButton').click(function(){
 	var win = window.open(link, '_self');
 })
 
+$('#begin-button').click(function(){
+	$('.welcome-content').hide();
+	$('.mainContent').show()
+})
 
 $('#theOtherButton').click(function(){
 	console.log("clicking")

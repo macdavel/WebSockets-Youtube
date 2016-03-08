@@ -97,6 +97,7 @@ textarea {
 
 .main-title{
     text-align: center;
+    color: crimson;
 }
 
 .option{
@@ -138,9 +139,35 @@ a{
     display: none;
 }
 
+body{
+  background-image: url('https://49.media.tumblr.com/9e016ce3fa774c4cde70cd0ff60ce1c8/tumblr_npi37bXoip1rv62h7o1_500.gif');
+  background-size: cover;
 
+}
 
+.mainContent{
+  display: none;
+}
 
+.welcome-content{
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.button-contextual {
+    font-size: 32px;
+    backface-visibility: hidden;
+    width: 300px;
+    border: 2px solid #85b99c;
+    display: block;
+    filter: alpha(opacity=50);
+    height: 60px;
+    transform: translate3d(0,0,0);
+    text-align: center;
+    margin: auto;
+}
 
 
 
