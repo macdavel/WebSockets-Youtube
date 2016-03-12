@@ -98,9 +98,13 @@ io.on('connection', function (socket) {
     });
 
 
+    socket.on('requestRooms',function(data){
+      socket.emit("rooms", Object.keys(io.sockets.adapter.rooms));
+    })
 
     socket.emit('news','handshake is done');
     socket.on('addVideo', function(video){
+          console.log(Object.keys(io.sockets.adapter.rooms));
          io.sockets["in"](socket.room).emit('addVideo', video)
     })
     // console.log("shake news sent");

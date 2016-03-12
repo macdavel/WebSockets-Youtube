@@ -10,7 +10,7 @@
 
 var DummyReactWrapper = React.createClass({
   getInitialState: function(){
-    return {queuedVideos: [], display: 'none' };
+    return {queuedVideos: [], display: 'none', playlistname: "" };
   },
   handleVideoQueue: function(video){
 
@@ -24,6 +24,7 @@ var DummyReactWrapper = React.createClass({
     console.log(this.socket);
     var room = location.pathname;
     this.socket.emit('room', room);
+    this.setState({playlistname: room})
     this.socket.on('news', function(data){
       console.log("Connection has been Made");
     })
@@ -52,7 +53,8 @@ var DummyReactWrapper = React.createClass({
     return(
       <div>
         <div className="pure-menu custom-menu-top">
-          <div className ="pure-menu-heading " onClick = {this.hide} >Kaswili The Global Playlist</div>
+          <img className = "burger-menu" onClick = {this.hide} src="https://cdn1.iconfinder.com/data/icons/basic-ui-elements-plain/422/06_menu_stack-128.png"/>
+          <div className ="pure-menu-heading ">Your playlist URL is: {this.state.playlistname} </div>
       </div>
         <div className = "main-section-sidebar" style = {{display: this.state.display}} >
             <img className = "close-button" src="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-plain/385/010_x-128.png" onClick = {this.hide} />

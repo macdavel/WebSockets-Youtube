@@ -257,6 +257,14 @@ textarea {
     background-color: green;
 }
 
+.burger-menu{
+    float: left;
+    height: 34px;
+    margin-top: 3px;
+    margin-left: 12px;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

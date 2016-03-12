@@ -51,11 +51,17 @@ function onPlayerStateChange(YPState){
     temp = lastVideoLink.split("v=");
     var lastVideo = temp[1];
     console.log(lastVideo);
+    // console.log(videoQueue.length);
+    console.log(videoQueue);
+    console.log(videoQueue.indexOf(String(lastVideo)));
+
+
     if(videoQueue.length != 0 && lastVideo == "7HSyOHae_6U" || videoQueue.indexOf(lastVideo) > -1){
         if(lastVideo == "7HSyOHae_6U"){
+          console.log("New Video about to load");
           var nextVideo = videoQueue[0];
+          console.log(nextVideo);
           player.loadVideoById(nextVideo);
-
         }
         else{
           console.log("changed the video")

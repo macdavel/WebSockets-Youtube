@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 function makeid()
 {
     var text = "";
@@ -54,10 +65,37 @@ $('#theOtherButton').click(function(){
 
 $('#Option2').click(function(){
 	$("#Option2").css("display", "block")
+	var thestring = '<div class="pure-menu pure-menu-horizontal"><ul class="pure-menu-list">'
+	var counter = 0;
+
+    for (var i = 0; i < rooms.length; i++) {
+    	console.log("In this part");
+    	console.log(rooms[i].length);
+    	counter++;
+    	if(rooms[i].length < 19){
+    		console.log("Another one!")
+    		var addition = '<li class="pure-menu-item"><a href="'+rooms[i]+'" class="pure-menu-link">'+rooms[i]+'</a></li>'
+    		thestring += addition;
+    	}
+    	
+    };
+    if(counter ==0){
+    	thestring += '<li class="pure-menu-item"><a href="default" class="pure-menu-link">No Playlists Available</a></li>'
+    }
+
+	thestring += '</ul></div>'
+
+
 	$("#form1").show();
+	$("#form1").html(thestring);
 })
 
-$('#Option3').click(function(){
-	$("#Option3").css("display", "block")
-	$("#form2").show();
+
+
+var rooms = [];
+var socket = io(location.origin);
+socket.emit('requestRooms')
+socket.on('rooms', function(data){
+	console.log(data);
+	rooms = data;
 })
